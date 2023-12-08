@@ -21,6 +21,7 @@ class AnimationPage extends StatefulWidget {
 }
 
 class _AnimationPageState extends State<AnimationPage> {
+  bool _showFirst = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,9 +29,20 @@ class _AnimationPageState extends State<AnimationPage> {
         body: Center(
           child: GestureDetector(
               onTap: () {
-                setState(() {});
+                setState(() {
+                  _showFirst = !_showFirst;
+                });
               },
-              child: const Text('Hello World!')),
+              child: AnimatedCrossFade(
+                duration: const Duration(milliseconds: 500),
+                firstChild:
+                    Image.network("https://source.unsplash.com/dfglhJbc4Uc"),
+                secondChild:
+                    Image.network("https://source.unsplash.com/w5N9CqsSnQ4"),
+                crossFadeState: _showFirst
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+              )),
         ),
       ),
     );

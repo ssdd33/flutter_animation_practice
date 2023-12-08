@@ -9,10 +9,28 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const AnimationPage();
+  }
+}
+
+class AnimationPage extends StatefulWidget {
+  const AnimationPage({super.key});
+
+  @override
+  State<AnimationPage> createState() => _AnimationPageState();
+}
+
+class _AnimationPageState extends State<AnimationPage> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: GestureDetector(
+              onTap: () {
+                setState(() {});
+              },
+              child: const Text('Hello World!')),
         ),
       ),
     );
